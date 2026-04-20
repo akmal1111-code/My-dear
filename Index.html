@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Kamu ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom, #ffd6e0, #fff);
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* ❤️ Background Love */
+.hearts-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.hearts-bg span {
+    position: absolute;
+    top: -10%;
+    font-size: 20px;
+    opacity: 0.8;
+    animation: fall linear infinite;
+}
+
+/* 🎯 SETIAP LOVE BERBEDA (ini kuncinya) */
+.hearts-bg span:nth-child(1) {
+    left: 5%;
+    animation-duration: 8s;
+    animation-delay: 0s;
+}
+.hearts-bg span:nth-child(2) {
+    left: 20%;
+    animation-duration: 10s;
+    animation-delay: 2s;
+}
+.hearts-bg span:nth-child(3) {
+    left: 35%;
+    animation-duration: 7s;
+    animation-delay: 4s;
+}
+.hearts-bg span:nth-child(4) {
+    left: 50%;
+    animation-duration: 9s;
+    animation-delay: 1s;
+}
+.hearts-bg span:nth-child(5) {
+    left: 65%;
+    animation-duration: 11s;
+    animation-delay: 3s;
+}
+.hearts-bg span:nth-child(6) {
+    left: 75%;
+    animation-duration: 6s;
+    animation-delay: 5s;
+}
+.hearts-bg span:nth-child(7) {
+    left: 85%;
+    animation-duration: 12s;
+    animation-delay: 2.5s;
+}
+.hearts-bg span:nth-child(8) {
+    left: 95%;
+    animation-duration: 9s;
+    animation-delay: 6s;
+}
+
+/* animasi jatuh */
+@keyframes fall {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(110vh) translateX(40px) rotate(360deg);
+    }
+}
+
+/* biar konten di atas */
+body > *:not(.hearts-bg) {
+    position: relative;
+    z-index: 1;
+}
+
+/* 🔐 Intro */
+.intro {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background: #ff4d6d;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* 🔓 Unlock Animation */
+.unlock {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 80px;
+    opacity: 0;
+    z-index: 10;
+}
+
+.unlock.show {
+    animation: unlockAnim 1.5s ease forwards;
+}
+
+@keyframes unlockAnim {
+    0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+    50% { transform: translate(-50%, -50%) scale(1.5); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}
+
+/* 💖 Main */
+.main {
+    display: none;
+    position: relative;
+    z-index: 2;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+.photo {
+    position: relative;
+}
+
+.photo img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+/* ❤️ Border love */
+.photo::before,
+.photo::after {
+    content: "❤️";
+    position: absolute;
+    animation: pulse 1.5s infinite;
+}
+
+.photo::before { top: -10px; left: -10px; }
+.photo::after { bottom: -10px; right: -10px; }
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.5); }
+    100% { transform: scale(1); }
+}
+
+/* 💌 Text */
+.text-box {
+    background: white;
+    margin: 20px;
+    padding: 15px;
+    border-radius: 15px;
+    animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ❤️ Background -->
+<div class="hearts-bg">
+    <span>❤️</span>
+    <span>💖</span>
+    <span>💕</span>
+    <span>💗</span>
+    <span>💘</span>
+    <span>💞</span>
+    <span>💓</span>
+    <span>❤️</span>
+</div>
+
+<!-- 🔐 Intro + Password -->
+<div class="intro" id="intro">
+    <h1>Halaman spesial untuk kamu 💌</h1>
+    <p>Nama cowo kamu❤️</p>
+
+    <input type="password" id="password" placeholder="Masukkan password..."
+    style="padding:10px;border-radius:10px;border:none;margin-top:10px;">
+
+    <br>
+    <button class="btn" onclick="cekPassword()">Masuk 🔐</button>
+
+    <p id="error" style="color:red; display:none;">Password salah 😢</p>
+</div>
+
+<!-- 🔓 Animasi Unlock -->
+<div id="unlockAnim" class="unlock">🔓</div>
+
+<!-- 💖 Main Content -->
+<div class="main" id="main">
+
+    <h1>Bini Gw ❤️</h1>
+
+    <div class="gallery">
+        <div class="photo"><img src="foto 1.jpg"></div>
+        <div class="photo"><img src="foto 2.jpg"></div>
+        <div class="photo"><img src="foto 3.jpg"></div>
+        <div class="photo"><img src="foto 4.jpg"></div>
+    </div>
+
+    <div class="text-box">
+        <p>Terima kasih sudah hadir di hidupku 🌙</p>
+        <p>Hal kecil bersamamu selalu jadi berarti</p>
+        <p>Aku mungkin tidak sempurna, tapi aku selalu berusaha untukmu</p>
+        <p>Aku harap kita selalu bersama 💙</p>
+    </div>
+
+</div>
+
+<script>
+function cekPassword() {
+    var pass = document.getElementById("password").value;
+
+    // GANTI PASSWORD DI SINI
+    if (pass === "amsa") {
+
+        var anim = document.getElementById("unlockAnim");
+        anim.classList.add("show");
+
+        setTimeout(function() {
+            document.getElementById("intro").style.display = "none";
+            document.getElementById("main").style.display = "block";
+        }, 1500);
+
+    } else {
+        document.getElementById("error").style.display = "block";
+    }
+}
+</script>
+
+</body>
+</html>
